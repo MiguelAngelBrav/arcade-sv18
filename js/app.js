@@ -63,11 +63,12 @@ Player.prototype.handleInput = function() {
 };
 
 
-// Now instantiate your objects.
+// Now instantiate your objects
 // Place all enemy objects in an array called allEnemies
 var allEnemies = [];
 // Place the player object in a variable called player
-var player = new Player();
+// var player = new Player(202, 350); 200 or 202 ?? -> col * 101, row * 83
+var player = new Player(202, 373);
 
 
 
