@@ -57,9 +57,38 @@ Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
 
+
+
 // 3 The handleInput method - Player.handleInput() method
-Player.prototype.handleInput = function() {
-    // do something
+Player.prototype.handleInput = function(keypress) {
+    // canvas.width = 505
+    // canvas.height = 606;
+    // Recall that the player cannot move off screen
+
+    switch (keypress) {
+        // Move player left
+        case 'left':
+            this.x -= 100;
+            break;
+        // Move player up
+        case 'up':
+            this.y -= 83;
+            break;
+        // Move player right
+        case 'right':
+            this.x += 100;
+            break;
+        // Moe player down
+        case 'down':
+            this.y += 83;
+            break;
+    }
+};
+
+// If the player reaches the water the game should be reset by moving the player
+// back to the initial location (you can write a separate reset Player method to handle that).
+Player.prototype.reset = function() {
+
 };
 
 
@@ -68,7 +97,7 @@ Player.prototype.handleInput = function() {
 var allEnemies = [];
 // Place the player object in a variable called player
 // var player = new Player(202, 350); 200 or 202 ?? -> col * 101, row * 83
-var player = new Player(202, 373);
+var player = new Player(200, 405);
 
 
 
