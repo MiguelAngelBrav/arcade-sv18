@@ -83,6 +83,19 @@ Player.prototype.handleInput = function(keypress) {
             this.y += 83;
             break;
     }
+
+    if (this.x > 400) {
+        console.log('outside right');
+    }
+    if (this.x < 0) {
+        console.log('outside left');
+    }
+    if (this.y > 405) {
+        console.log('outside bottom');
+    }
+    if (this.y < 0) {
+        console.log('call reset method');
+    }
 };
 
 // If the player reaches the water the game should be reset by moving the player
