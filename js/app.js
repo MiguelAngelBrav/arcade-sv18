@@ -85,15 +85,20 @@ Player.prototype.handleInput = function(keypress) {
     }
 
     if (this.x > 400) {
+        this.x = 400;
         console.log('outside right');
     }
     if (this.x < 0) {
+        this.x = 0;
         console.log('outside left');
     }
     if (this.y > 405) {
+        this.y = 405;
         console.log('outside bottom');
     }
     if (this.y < 0) {
+        this.y = 405;
+        this.x = 200;
         console.log('call reset method');
     }
 };
