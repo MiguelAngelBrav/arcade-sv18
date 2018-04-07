@@ -63,7 +63,6 @@ Player.prototype.render = function() {
 Player.prototype.handleInput = function(keypress) {
     // canvas.width = 505
     // canvas.height = 606;
-    // Recall that the player cannot move off screen
 
     switch (keypress) {
         // Move player left
@@ -84,6 +83,7 @@ Player.prototype.handleInput = function(keypress) {
             break;
     }
 
+    // Recall that the player cannot move off screen
     if (this.x > 400) {
         this.x = 400;
         console.log('outside right');
