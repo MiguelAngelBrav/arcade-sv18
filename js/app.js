@@ -14,17 +14,17 @@ var Enemy = function(x, y, speed) {
     this.sprite = 'images/enemy-bug.png';
 };
 
+
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for all computers
-
-    // in this method you will change the x position of enemies
-    // you will need to multiply dt to speed
-    this.speed * dt;
-
+    if (this.x < 505)
+        this.x += (this.speed * dt);
+    else
+        this.x = -300;
 };
+
 
 // Draw the enemy on the screen, required method for game
 Enemy.prototype.render = function() {
@@ -34,8 +34,6 @@ Enemy.prototype.render = function() {
 
 
 //PLAYER CLASS
-// This class requires an update(), render() and a handleInput() method.
-//var Player = function(x, y, speed???) {
 var Player = function(x, y) {
     // Setting the Player initial location
     this.x = x;
@@ -51,7 +49,7 @@ Player.prototype.update = function(dt) {
     // do something
 };
 
-// 2 The render method for the Player (use the code from the render method for the Enemy)
+// 2 The render method for the Player
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
@@ -96,30 +94,40 @@ Player.prototype.handleInput = function(keypress) {
         console.log('outside bottom');
     }
     if (this.y < 0) {
-        this.y = 405;
-        this.x = 200;
         console.log('call reset method');
+        setTimeout(winnerMessage, 200)
+        // player.reset();
     }
 };
 
 // If the player reaches the water the game should be reset by moving the player
 // back to the initial location (you can write a separate reset Player method to handle that).
 Player.prototype.reset = function() {
-
+    this.y = 405;
+    this.x = 200;
 };
+
+// CONGRATULATIONS POPUP MESSAGE
+function winnerMessage() {
+    swal(
+        'Good job!'
+    ).then(player.reset())
+}
 
 
 // Now instantiate your objects
-var enemyOne = new Enemy(0, 63, 0);
-var enemyTwo = new Enemy(0, 146, 0);
-var enemyThree = new Enemy(0, 229, 0);
+var enemyOne = new Enemy(-300, 63, 250);
+var enemyTwo = new Enemy(-500, 140, 250);
+var enemyThree = new Enemy(-100, 229, 250);
+var enemyOneBack = new Enemy(-600, 63, 250);
+var enemyTwoBack = new Enemy(-50, 140, 250);
+var enemyThreeBack = new Enemy(-400, 229, 250);
 
 // Place all enemy objects in an array called allEnemies
-allEnemies = [enemyOne, enemyTwo, enemyThree];
+allEnemies = [enemyOne, enemyTwo, enemyThree, enemyOneBack, enemyTwoBack, enemyThreeBack];
 
 // Place the player object in a variable called player
 var player = new Player(200, 405);
-
 
 
 // This listens for key presses and sends the keys to your
