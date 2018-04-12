@@ -18,12 +18,11 @@ var Enemy = function(x, y, speed) {
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
+    // which will ensure the game runs at the same speed for all computers
 
     // in this method you will change the x position of enemies
-    // and yeah here you will need to multiply dt to speed
-    // this.speed * dt;
+    // you will need to multiply dt to speed
+    this.speed * dt;
 
 };
 
@@ -111,10 +110,14 @@ Player.prototype.reset = function() {
 
 
 // Now instantiate your objects
+var enemyOne = new Enemy(0, 63, 0);
+var enemyTwo = new Enemy(0, 146, 0);
+var enemyThree = new Enemy(0, 229, 0);
+
 // Place all enemy objects in an array called allEnemies
-var allEnemies = [];
+allEnemies = [enemyOne, enemyTwo, enemyThree];
+
 // Place the player object in a variable called player
-// var player = new Player(202, 350); 200 or 202 ?? -> col * 101, row * 83
 var player = new Player(200, 405);
 
 
