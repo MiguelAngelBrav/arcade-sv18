@@ -23,7 +23,16 @@ Enemy.prototype.update = function(dt) {
         this.x += (this.speed * dt);
     else
         this.x = -300;
+
+    // Vehicle-player collision resets the game
+    if (this.x < player.x + 50 &&
+    this.x + 50 > player.x &&
+    this.y < player.y + 50 &&
+    this.y + 50 > player.y)
+    player.reset();
 };
+
+
 
 
 // Draw the enemy on the screen, required method for game
@@ -116,12 +125,12 @@ function winnerMessage() {
 
 
 // Now instantiate your objects
-var enemyOne = new Enemy(-300, 63, 250);
-var enemyTwo = new Enemy(-500, 140, 250);
-var enemyThree = new Enemy(-100, 229, 250);
-var enemyOneBack = new Enemy(-600, 63, 250);
-var enemyTwoBack = new Enemy(-50, 140, 250);
-var enemyThreeBack = new Enemy(-400, 229, 250);
+var enemyOne = new Enemy(-300, 63, 270);
+var enemyTwo = new Enemy(-500, 140, 270);
+var enemyThree = new Enemy(-100, 229, 270);
+var enemyOneBack = new Enemy(-600, 63, 270);
+var enemyTwoBack = new Enemy(-50, 140, 270);
+var enemyThreeBack = new Enemy(-400, 229, 270);
 
 // Place all enemy objects in an array called allEnemies
 allEnemies = [enemyOne, enemyTwo, enemyThree, enemyOneBack, enemyTwoBack, enemyThreeBack];
